@@ -1,0 +1,26 @@
+.build/
+build/
+dist/
+*.o
+.DS_Store
+.swiftpm/
+*.keys
+!Tests/fixtures/enc/test.keys
+__pycache__/
+*.pyc
+# personal / local only
+.mgr/
+run.log
+t_sass.c
+RunZelda.command
+AutoRun.command
+Resources/_old/
+/mgrcli
+# engine build output
+Engines/nxnative/dm/host/gen/
+Engines/nxnative/dm/host/dmhost
+Engines/nxnative/dm/host/dmhost.dSYM/
+GizzysGamingHub/
+Engines/nxnative/dm/tools/nx_extract/obj/
+Engines/nxnative/dm/tools/nx_extract/bin/
+dist/

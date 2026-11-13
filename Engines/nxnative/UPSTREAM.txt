@@ -1,0 +1,23 @@
+Upstream: https://github.com/seedds/nxnative
+Commit: caa4a8a0b083e09a47147f9b716d0e51884503c7
+Imported: 2026-11-09
+Licence: MIT (LICENSE in this folder); third-party licences in dm/third_party/*.
+Not included: zbic (GPLv2, an optional pip package nxnative imports at build time; MikesGameRoom will use its own ZBIC decoder).
+
+Local changes (MikesGameRoom):
+- dm/tools/nso.py: zstd_segment uses MikesGameRoom's mgrzbic (MGR_ZBIC) instead of the GPLv2 zbic package.
+- dm/gfx/tools/shader_split.py: Metroid Prime 4: Beyond's Retro packs: 60-byte ADIR entries (the 52-byte layout plus a u64),
+  Zstandard-compressed MTRL resources (zstd_frame) and Zstandard SNVN program records (zstd_exact), beside the zlib forms.
+- dm/gfx/tools/dmsh_build.py: publish_cache reads a finished shader's outputs through output() (disk or the cache stage) before writing the cache entry,
+  instead of opening them on disk after checking; a parallel commit could move a file in between (seen with Metroid Prime 4's 195,239 shaders).
+
+- dm/gfx/nvn/nvn_mtl.m tex_fit: a 3D texture in a 2D / 2D-array slot binds the zero texture of the declared type (Splatoon 3 flicker; MikesGameRoom change)
+- dm/gfx/nvn/nvn_mtl.m fb_prepare: layer passes sampling the texture they render into read a whole-texture snapshot (fb_snap_whole; Splatoon 3 NaN blocks; MikesGameRoom change)
+- dm/host/hle_hid.c ctrl_support: players past the controller applet's maximum are disconnected from the game, as on a Switch (g_applet_cap; Metroid Prime 4 reopened the applet and ran at 30 fps; MikesGameRoom change)
+- dm/host/front_mac.m: the pointer hides when the game window opens and after 2 s idle over it (DM_HIDE_CURSOR=0 keeps it; MikesGameRoom change)
+- dm/gfx/tools/shader_split.py ue3_body / ue3_shaders: NetherRealm packages (Mortal Kombat 11): u64 chunk sizes after a u32 0, and shader records with the control section (plus its text listing) before the code area, header-less code areas as compute shaders (MikesGameRoom change)
+- dm/host/hle_movie.c md_out_tex: an SDK 6 native-texture buffer with capacity 0 is accepted (the texture check still applies; Mortal Kombat 11; MikesGameRoom change)
+- dm/gfx/nvn/nvn_mtl.m pso_mixed_uint: a pipeline writing only integer targets that match the mixed entry point's integer outputs takes it (Mortal Kombat 11 characters flat-coloured; MikesGameRoom change)
+- dm/gfx/tools/dmsh_build.py fs_uint + dm/gfx/nvn/nvn_mtl.m: a second mixed entry point main0_m2 that also returns outputs whose values say nothing (uniform words) as integers, taken when main0_m does not match (Mortal Kombat 11 characters; MikesGameRoom change)
+- dm/host/hle_sdk16.c StandardNetworkSystemClock::GetCurrentTime: DM_NET_CLOCK=1 answers with the host time (Mortal Kombat 11 Updating Game Data; MikesGameRoom change)
+- scripts/build_ipa_from_nsp.py check_prereqs: zbic is not required when MGR_ZBIC names MikesGameRoom's own decoder (MikesGameRoom change)

@@ -1,0 +1,27 @@
+GIZZY'S GAMING HUB — QUICK START
+
+1. Drag "Gizzy's Gaming Hub" onto the Applications folder.
+
+2. The first time, RIGHT-CLICK the app in Applications and choose Open,
+   then click Open again. (The app is free and not notarized by Apple, so
+   macOS asks once. After that it opens normally.)
+   If macOS still blocks it: System Settings › Privacy & Security ›
+   scroll down › "Open Anyway".
+
+3. The hub opens its setup window on first launch. Before you run it:
+     • Install Xcode from the Mac App Store (free) and open it once.
+     • Install Homebrew from https://brew.sh (free).
+   Then click "Run Setup". It installs the rest (about 10–20 minutes).
+
+4. Settings › Keys: import your own prod.keys, dumped from your own Switch.
+   Keys are NOT included and never will be.
+
+5. Add your own game dumps (.nsp / .xci / .nup) with "Add Game", open a game
+   and click "Prepare for Mac". The first preparation of a big game takes
+   a while and keeps the Mac busy. Then press Play.
+
+Requirements: an Apple silicon Mac (M1 or later), macOS 13 or later, and
+plenty of free disk space (a prepared game can take 10–40 GB).
+
+No games, keys or copyrighted Nintendo files are included. Only play games
+you own and dumped yourself.
